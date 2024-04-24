@@ -1,45 +1,68 @@
-<h1>On-premises Active Directory Deployed in Azure</h1>
+# On-premises Active Directory Deployed in Azure
 
-<h2>Overview</h2>
-This project involved the deployment of an on-premises AD infrastructure within Microsoft Azure. Using VMs through Azure, this demonstrates extending traditional AD services to the cloud, providing scalable and robust identity management solutions.
+## Overview
+This project involves deploying an on-premises Active Directory (AD) infrastructure within Microsoft Azure. Utilizing Azure Virtual Machines, this demonstration extends traditional AD services to the cloud, providing scalable and robust identity management solutions.
 
-- <h2>Environments and Technologies Used</h2>
-- <b>Microsoft Azure:</b> Azure Virtual Machines </b>
-- <b>Remote Desktop</b>
-- <b>Active Directory Domain Services</b>
-- <b>PowerShell</b>
-- <b>Operating Systems: </b>
+## Environments and Technologies Used
+- **Microsoft Azure**: Virtual Machines (VMs)
+- **Remote Desktop**
+- **Active Directory Domain Services**
+- **PowerShell**
+- **Operating Systems Used**:
   - Windows Server 2022
   - Windows 10
-- <h2>High-Level Deployment and Configuration Steps</h2>
-1. <b>Prepare Azure environment: </b>
+
+## High-Level Deployment and Configuration Steps
+1. **Prepare Azure Environment**:
    - Set up Azure Virtual Machines for the domain controller and member servers.
-2. <b>Install and Configure Active Directory: </b>
+2. **Install and Configure Active Directory**:
    - Install Active Directory Domain Services on the designated VM.
    - Promote the VM to a domain controller.
-3. <b>Configure Networking and Firewall Settings: </b>
-   - Adjust network settings to allow proper AD operations across the network.
-4. <b>Validation and Testing: </b>
+3. **Configure Networking and Firewall Settings**:
+   - Adjust network settings to ensure proper AD operations across the network.
+4. **Validation and Testing**:
    - Perform system checks and validate AD functionalities within Azure.
-  
-- <h2>Detailed Deployment and Configuration Steps</h2>
-1. <b>Azure Setup: </b>
-   - Create Resource Groups:
-     
-   - Configure Virtual Network Settings:
-  
-2. <b>Active Directory Installation </b>
-   - Install AD Domain Services on a new VM:
-     
-   - Promote the VM to a domain controller:
-     
-3. <b>Network Configuration </b>
-   - Adjust DNS settings for AD operations:
-  
-   - Set up Firewall rules for secure AD communication:
-  
-4. <b>System Testing </b>
-   - User Creation and Role Assignments:
-     
-   - Test Authentication and Authorization:
 
+## Detailed Deployment and Configuration Steps
+
+### Step 1: Azure Setup
+- **Create Resource Groups**:
+  - Instructions on how to create and configure Azure resource groups. 
+  - *Screenshot: Resource group configuration.*
+
+- **Configure Virtual Network Settings**:
+  - Detailed steps for setting up a virtual network in Azure.
+  - *Screenshot: Virtual network setup.*
+
+### Step 2: Active Directory Installation
+- **Install AD Domain Services on a New VM**:
+  - Steps for installing AD DS on a VM in Azure.
+  - *Screenshot: Installation process.*
+
+- **Promote the VM to Domain Controller**:
+  - Instructions on promoting the VM to act as a domain controller.
+  - *Screenshot: Promotion to domain controller.*
+
+### Step 3: Network Configuration
+- **Adjust DNS Settings for AD Operations**:
+  - How to configure DNS settings for your AD domain.
+  - *Screenshot: DNS configuration.*
+
+- **Set Up Firewall Rules for Secure AD Communication**:
+  - Steps to configure firewall rules to secure communication between AD components.
+  - *Screenshot: Firewall settings.*
+
+### Step 4: System Testing
+- **User Creation and Role Assignments**:
+  - Procedure for creating users and assigning roles in AD.
+  - *Screenshot: User creation and role assignment.*
+
+- **Test Authentication and Authorization**:
+  - Steps to verify correct authentication and authorization processes.
+  - *Screenshot: Testing authentication.*
+
+## Conclusion
+Deploying an Active Directory on Azure offers a scalable, secure, and robust platform for managing identities in a cloud environment. This project showcases the integration of traditional IT systems with modern cloud infrastructure, providing a foundation for hybrid identity solutions.
+
+## Connect with Me
+- *LinkedIn:* [https://www.linkedin.com/in/chazz-c-382a75122/](#)
