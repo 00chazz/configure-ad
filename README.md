@@ -80,5 +80,5 @@ This comprehensive project involves deploying an on-premises Active Directory (A
 ## Conclusion
 Deploying an Active Directory on Azure provides a robust platform for managing organizational identities and enhances security through centralized administration. This demonstrates integration of traditional IT systems with advanced cloud infrastructure and creating a dynamic environment suitable for modern business needs.
 
-## Connect with Me
+## Connect with Me:
 - *LinkedIn:* [Chazz Conino](https://www.linkedin.com/in/chazz-c-382a75122/)
