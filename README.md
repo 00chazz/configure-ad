@@ -1,4 +1,4 @@
-<h1>On-premises Active Directory Deployed in the Cloud (Azure)</h1>
+<h1>On-premises Active Directory Deployed in Azure</h1>
 
 <h2>Overview</h2>
 This project involved the deployment of an on-premises AD infrastructure within Microsoft Azure. Using VMs through Azure, this demonstrates extending traditional AD services to the cloud, providing scalable and robust identity management solutions.
