@@ -66,4 +66,4 @@ This project involves deploying an on-premises Active Directory (AD) infrastruct
 Deploying an Active Directory on Azure offers a scalable, secure, and robust platform for managing identities in a cloud environment. This project showcases the integration of traditional IT systems with modern cloud infrastructure, providing a foundation for hybrid identity solutions.
 
 ## Connect with Me
-- *LinkedIn:* [https://www.linkedin.com/in/chazz-c-382a75122/](#)
+- *LinkedIn:* [Chazz Conino](https://www.linkedin.com/in/chazz-c-382a75122/)
