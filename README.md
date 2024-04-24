@@ -27,39 +27,40 @@ This project involves deploying an on-premises Active Directory (AD) infrastruct
 
 ### Step 1: Azure Setup
 - **Create Resource Groups**:
-  - Instructions on how to create and configure Azure resource groups. 
-  - *Screenshot: Resource group configuration.*
+  - Navigate to the Azure portal and create a new resource group by selecting Resource groups -> Add. Provide a name and select the region that matches your requirements.
+  - **Screenshot**: Capture the Azure portal screen showing the newly created resource group with its name and location.
 
 - **Configure Virtual Network Settings**:
-  - Detailed steps for setting up a virtual network in Azure.
-  - *Screenshot: Virtual network setup.*
+  - In the same resource group, create a virtual network by selecting Virtual networks -> Add. Define the subnet details and ensure it is properly linked to the created resource group.
+  - **Screenshot**: Display the virtual network settings with the subnet configuration.
 
 ### Step 2: Active Directory Installation
 - **Install AD Domain Services on a New VM**:
-  - Steps for installing AD DS on a VM in Azure.
-  - *Screenshot: Installation process.*
+  - Create a new VM within your resource group. During the VM setup, select the image for Windows Server 2022 and ensure that it includes the AD Domain Services role.
+  - **Screenshot**: Take a screenshot of the VM overview page showing the Windows Server 2022 operating system and the role as AD Domain Services.
 
 - **Promote the VM to Domain Controller**:
-  - Instructions on promoting the VM to act as a domain controller.
-  - *Screenshot: Promotion to domain controller.*
+  - After the VM deployment, connect to the VM using Remote Desktop. Open Server Manager, go to Roles and Features, and promote the server to a domain controller.
+  - **Screenshot**: Capture the final screen of the Active Directory Domain Services Configuration Wizard showing the successful promotion.
 
 ### Step 3: Network Configuration
 - **Adjust DNS Settings for AD Operations**:
-  - How to configure DNS settings for your AD domain.
-  - *Screenshot: DNS configuration.*
+  - Configure the DNS settings within the VM to ensure all domain requests are properly routed. This is done through the network interface settings.
+  - **Screenshot**: Show the DNS configuration within the network settings of the Azure VM.
 
 - **Set Up Firewall Rules for Secure AD Communication**:
-  - Steps to configure firewall rules to secure communication between AD components.
-  - *Screenshot: Firewall settings.*
+  - Configure the necessary firewall rules to allow AD communications. This typically involves allowing LDAP, Kerberos, and DNS protocols through the Windows Firewall.
+  - **Screenshot**: Capture the Windows Firewall settings showing the rules for Active Directory.
 
 ### Step 4: System Testing
 - **User Creation and Role Assignments**:
-  - Procedure for creating users and assigning roles in AD.
-  - *Screenshot: User creation and role assignment.*
+  - Create a test user in Active Directory Users and Computers snap-in. Assign a role and verify group membership.
+  - **Screenshot**: Take a screenshot of the new user account properties dialog box showing the assigned groups and roles.
 
 - **Test Authentication and Authorization**:
-  - Steps to verify correct authentication and authorization processes.
-  - *Screenshot: Testing authentication.*
+  - Log in using the test user account via Remote Desktop or another authentication method to verify correct setup.
+  - **Screenshot**: Capture the successful login attempt, possibly showing the user desktop or a logged event in the event viewer.
+
 
 ## Conclusion
 Deploying an Active Directory on Azure offers a scalable, secure, and robust platform for managing identities in a cloud environment. This project showcases the integration of traditional IT systems with modern cloud infrastructure, providing a foundation for hybrid identity solutions.
