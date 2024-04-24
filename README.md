@@ -1,69 +1,84 @@
 # On-premises Active Directory Deployed in Azure
 
 ## Overview
-This project involves deploying an on-premises Active Directory (AD) infrastructure within Microsoft Azure. Utilizing Azure Virtual Machines, this demonstration extends traditional AD services to the cloud, providing scalable and robust identity management solutions.
+This comprehensive project involves deploying an on-premises Active Directory (AD) infrastructure within Microsoft Azure. This setup demonstrates extending traditional AD services to the cloud, ensuring scalable and secure identity management solutions using Azure Virtual Machines.
 
 ## Environments and Technologies Used
-- **Microsoft Azure**: Virtual Machines (VMs)
+- **Microsoft Azure**: Virtual Machines (VMs), Virtual Networks
 - **Remote Desktop**
 - **Active Directory Domain Services**
 - **PowerShell**
 - **Operating Systems Used**:
-  - Windows Server 2022
-  - Windows 10
+  - Windows Server 2022 (Domain Controller)
+  - Windows 10 (Client Machine)
 
 ## High-Level Deployment and Configuration Steps
 1. **Prepare Azure Environment**:
-   - Set up Azure Virtual Machines for the domain controller and member servers.
+   - Set up Azure Virtual Machines for the domain controller and member servers within the same virtual network.
 2. **Install and Configure Active Directory**:
-   - Install Active Directory Domain Services on the designated VM.
-   - Promote the VM to a domain controller.
+   - Install Active Directory Domain Services on the designated domain controller VM and promote it.
 3. **Configure Networking and Firewall Settings**:
-   - Adjust network settings to ensure proper AD operations across the network.
+   - Adjust DNS and firewall settings to support AD operations.
 4. **Validation and Testing**:
-   - Perform system checks and validate AD functionalities within Azure.
+   - Test connectivity and authentication across domain-joined machines.
 
 ## Detailed Deployment and Configuration Steps
 
 ### Step 1: Azure Setup
-- **Create Resource Groups**:
-  - Navigate to the Azure portal and create a new resource group by selecting Resource groups -> Add. Provide a name and select the region that matches your requirements.
-  - **Screenshot**: Capture the Azure portal screen showing the newly created resource group with its name and location.
+- **Create Resource Groups and Virtual Network**:
+  - Create a new resource group and virtual network in Azure. Set up two VMs (DC-1 for Domain Controller and Client-1 for client operations) within this network.
+  - Here is all of our resources within our resource group: ![image](https://github.com/00chazz/configure-ad/assets/63687898/eeb0ff50-74ef-43da-9688-24b72bb8c176)
 
-- **Configure Virtual Network Settings**:
-  - In the same resource group, create a virtual network by selecting Virtual networks -> Add. Define the subnet details and ensure it is properly linked to the created resource group.
-  - **Screenshot**: Display the virtual network settings with the subnet configuration.
+<br />
 
 ### Step 2: Active Directory Installation
-- **Install AD Domain Services on a New VM**:
-  - Create a new VM within your resource group. During the VM setup, select the image for Windows Server 2022 and ensure that it includes the AD Domain Services role.
-  - **Screenshot**: Take a screenshot of the VM overview page showing the Windows Server 2022 operating system and the role as AD Domain Services.
+- **Install and Promote Active Directory Domain Services**:
+  - Install AD DS on DC-1, set up a new forest (e.g., `mydomain.com`), and promote it to a domain controller.
+  - After deploying, we can promote it to a domain controller:
+    ![image](https://github.com/00chazz/configure-ad/assets/63687898/5c5c56f2-e75a-43c7-944f-b163acb6cb70)
 
-- **Promote the VM to Domain Controller**:
-  - After the VM deployment, connect to the VM using Remote Desktop. Open Server Manager, go to Roles and Features, and promote the server to a domain controller.
-  - **Screenshot**: Capture the final screen of the Active Directory Domain Services Configuration Wizard showing the successful promotion.
+<br />
 
-### Step 3: Network Configuration
-- **Adjust DNS Settings for AD Operations**:
-  - Configure the DNS settings within the VM to ensure all domain requests are properly routed. This is done through the network interface settings.
-  - **Screenshot**: Show the DNS configuration within the network settings of the Azure VM.
+- **Network Configuration and Connectivity**:
+  - Ensure both VMs are in the same Vnet. From Client-1, verify connectivity by pinging DC-1.
+  - Successful ping results from Client-1 to DC-1 after enabling ICMP through firewall:
+    ![image](https://github.com/00chazz/configure-ad/assets/63687898/52f38d10-3b4e-474e-955b-1741e8578c00)
 
-- **Set Up Firewall Rules for Secure AD Communication**:
-  - Configure the necessary firewall rules to allow AD communications. This typically involves allowing LDAP, Kerberos, and DNS protocols through the Windows Firewall.
-  - **Screenshot**: Capture the Windows Firewall settings showing the rules for Active Directory.
+<br />
 
-### Step 4: System Testing
-- **User Creation and Role Assignments**:
-  - Create a test user in Active Directory Users and Computers snap-in. Assign a role and verify group membership.
-  - **Screenshot**: Take a screenshot of the new user account properties dialog box showing the assigned groups and roles.
+### Step 3: User and Computer Management
+- **Organizational Units and User Setup**:
+  - Create organizational units (OUs) in AD for employees and admins. Create user accounts, including an administrative account (`john_admin`).
+  - Employee and admin OUs are created, with new user john_admin in the Domain Admins group:.![image](https://github.com/00chazz/configure-ad/assets/63687898/6dfccff2-aac1-4d56-bfb4-d889b6562e08)
 
-- **Test Authentication and Authorization**:
-  - Log in using the test user account via Remote Desktop or another authentication method to verify correct setup.
-  - **Screenshot**: Capture the successful login attempt, possibly showing the user desktop or a logged event in the event viewer.
+<br />
 
+- **Join Client VM to Domain and Test Remote Desktop**:
+  - Adjust Client-1’s DNS settings to point to DC-1. Join Client-1 to `mydomain.com` and verify its appearance in ADUC under the Computers container.
+  - Client-1 was added to the domain, and does indeed appear in ADUC:![image](https://github.com/00chazz/configure-ad/assets/63687898/1bad10e3-4121-465b-9850-3a15c484ef9e)
+
+<br />
+
+### Step 4: System Testing and Policy Implementation
+- **Remote Desktop Configuration**:
+  - Configure remote desktop settings on Client-1 to allow access for domain users.
+  - The system properties window showing Domain Users can access the CLient-1 desktop: ![image](https://github.com/00chazz/configure-ad/assets/63687898/59830771-fdbc-4b8c-ad7e-9c15a35c788f)
+
+
+<br />
+
+- **User Login Tests**:
+  - Create additional users using a PowerShell script and test logging into Client-1 with these accounts.
+  - Users being created, and successfull login with random user "kof.vehi":
+     ![image](https://github.com/00chazz/configure-ad/assets/63687898/74fdc050-5d0c-4def-8932-0f6afac3aa10)
+   ![image](https://github.com/00chazz/configure-ad/assets/63687898/9ed4ecd4-2ddb-43df-b08c-636dfa04da73)
+
+
+
+<br />
 
 ## Conclusion
-Deploying an Active Directory on Azure offers a scalable, secure, and robust platform for managing identities in a cloud environment. This project showcases the integration of traditional IT systems with modern cloud infrastructure, providing a foundation for hybrid identity solutions.
+Deploying an Active Directory on Azure provides a robust platform for managing organizational identities and enhances security through centralized administration. This demonstrates integration of traditional IT systems with advanced cloud infrastructure and creating a dynamic environment suitable for modern business needs.
 
 ## Connect with Me
 - *LinkedIn:* [Chazz Conino](https://www.linkedin.com/in/chazz-c-382a75122/)
